@@ -16,6 +16,7 @@ import { white, purple } from './utils/colors';
 import middleware from './middleware';
 import reducer from './reducers';
 import DeckView from './components/DeckView';
+import Quiz from './components/Quiz';
 
 function FlashcardStatusBar({ backgroundColor, ...props }) {
   return (
@@ -91,12 +92,23 @@ const StackConfig = {
       title: 'Deck View',
     },
   },
+  Quiz: {
+    name: 'Quiz',
+    component: Quiz,
+    options: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      },
+    },
+  },
 };
 const Stack = createStackNavigator();
 const MainNav = () => (
   <Stack.Navigator {...StackNavigatorConfig}>
     <Stack.Screen {...StackConfig['TabNav']} />
     <Stack.Screen {...StackConfig['DeckView']} />
+    <Stack.Screen {...StackConfig['Quiz']} />
   </Stack.Navigator>
 );
 

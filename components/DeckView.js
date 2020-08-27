@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import { FontAwesome } from '@expo/vector-icons';
 
-import { white, lightgray, lightblue } from '../utils/colors';
+import { purple, white, lightgray, lightblue, red } from '../utils/colors';
 import Button from './Button';
 import { getCardsLength } from '../utils/helper';
 
@@ -14,7 +15,7 @@ class DeckView extends Component {
   };
 
   render() {
-    const { questions, title } = this.props;
+    const { questions, title, navigation } = this.props;
     this.setTitle(title);
     return (
       <View style={styles.container}>

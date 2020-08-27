@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
-import { purple, lightgray, gray, white } from '../utils/colors';
+import { purple, lightgray, white } from '../utils/colors';
 
-const CustomBtn = ({ onPress, disabled, text }) => {
+const Button = ({ onPress, disabled, text }) => {
   return (
     <TouchableOpacity
       style={[
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomBtn;
+export default Button;
