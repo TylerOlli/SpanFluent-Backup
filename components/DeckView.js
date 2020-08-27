@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { white, lightgray, lightblue } from '../utils/colors';
+import Button from './Button';
 import { getCardsLength } from '../utils/helper';
 
 class DeckView extends Component {
@@ -21,6 +22,11 @@ class DeckView extends Component {
         <Text style={styles.cardNumber}>
           {getCardsLength(questions.length)}
         </Text>
+        <Button
+          onPress={() => navigation.navigate('Quiz', { deckId: title })}
+          disabled={questions.length === 0 ? true : false}
+          text='Start Quiz'
+        />
       </View>
     );
   }
