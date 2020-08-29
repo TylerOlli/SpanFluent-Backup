@@ -334,3 +334,18 @@ export function getDecks() {
     }
   });
 }
+
+export function addCardToDeck(card, title) {
+  getDecks()
+    .then((decks) => {
+      return {
+        ...decks,
+        [title]: {
+          questions: decks[title].questions.concat([card]),
+        },
+      };
+    })
+    .then((newDecks) => {
+      AsyncStorage.setItem(DECK_STORAGE, JSON.stringify(newDecks));
+    });
+}

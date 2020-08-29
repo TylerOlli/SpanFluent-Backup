@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -23,11 +23,32 @@ class DeckView extends Component {
         <Text style={styles.cardNumber}>
           {getCardsLength(questions.length)}
         </Text>
+        <TouchableOpacity
+          style={styles.buttonLight}
+          onPress={() => navigation.navigate('AddCard', { deckId: title })}
+        >
+          <Text style={styles.buttonTextDark}>Add Card</Text>
+        </TouchableOpacity>
         <Button
           onPress={() => navigation.navigate('Quiz', { deckId: title })}
           disabled={questions.length === 0 ? true : false}
           text='Start Quiz'
         />
+        {questions.length === 0 ? (
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              margin: 3,
+              padding: 5,
+            }}
+          >
+            <FontAwesome name='warning' size={16} color={red} />
+            <Text style={{ color: red }}>
+              Add card before you can start quiz
+            </Text>
+          </View>
+        ) : null}
       </View>
     );
   }
@@ -50,6 +71,20 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     fontSize: 20,
     color: lightgray,
+  },
+  buttonLight: {
+    backgroundColor: white,
+    borderRadius: 5,
+    height: 40,
+    width: 150,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
+  },
+  buttonTextDark: {
+    color: purple,
+    fontWeight: '500',
   },
 });
 
