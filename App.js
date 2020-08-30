@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 
 import React, { Component } from 'react';
 import { StatusBar, Platform, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -18,6 +18,7 @@ import reducer from './reducers';
 import DeckView from './components/DeckView';
 import Quiz from './components/Quiz';
 import AddCard from './components/AddCard';
+import AddDeck from './components/AddDeck';
 
 function FlashcardStatusBar({ backgroundColor, ...props }) {
   return (
@@ -37,6 +38,16 @@ const RouteConfigs = {
         <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
       ),
       title: 'Decks',
+    },
+  },
+  AddDeck: {
+    component: AddDeck,
+    name: 'Add Deck',
+    options: {
+      tabBarIcon: ({ tintColor }) => (
+        <FontAwesome name='plus-square' size={30} color={tintColor} />
+      ),
+      title: 'Add Deck',
     },
   },
 };
@@ -69,6 +80,7 @@ const Tab =
 const TabNav = () => (
   <Tab.Navigator {...TabNavigatorConfig}>
     <Tab.Screen {...RouteConfigs['DeckList']} />
+    <Tab.Screen {...RouteConfigs['AddDeck']} />
   </Tab.Navigator>
 );
 

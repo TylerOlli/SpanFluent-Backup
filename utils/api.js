@@ -349,3 +349,19 @@ export function addCardToDeck(card, title) {
       AsyncStorage.setItem(DECK_STORAGE, JSON.stringify(newDecks));
     });
 }
+
+export function saveNewDeck(title) {
+  return getDecks()
+    .then((decks) => {
+      return {
+        ...decks,
+        [title]: {
+          title,
+          questions: [],
+        },
+      };
+    })
+    .then((newDecks) => {
+      AsyncStorage.setItem(DECK_STORAGE, JSON.stringify(newDecks));
+    });
+}
