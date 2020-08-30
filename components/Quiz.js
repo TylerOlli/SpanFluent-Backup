@@ -17,6 +17,7 @@ import {
   white,
   red,
 } from '../utils/colors';
+import { clearLocalNotification, setLocalNotification } from '../utils/helper';
 
 class Quiz extends Component {
   UNSAFE_componentWillMount() {
@@ -87,6 +88,9 @@ class Quiz extends Component {
         Animated.timing(bounceScore, { duration: 200, toValue: 2.04 }),
         Animated.spring(bounceScore, { toValue: 1, friction: 4 }),
       ]).start();
+
+      // Clear local notification at the end of a completed quiz
+      clearLocalNotification().then(setLocalNotification);
     } else {
       this.setState((recentState) => ({
         cardIdx: recentState.cardIdx + 1,
