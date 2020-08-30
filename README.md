@@ -12,3 +12,5 @@ $ yarn install
 
 $ yarn start OR $ expo start
 ```
+
+App works on both IOS and Android (Tested on IOS Simulator)
